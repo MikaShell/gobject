@@ -20,11 +20,13 @@ pub fn build(b: *std.Build) void {
         "Gio-2.0",
         "GObject-2.0",
         "GLib-2.0",
-        "Gtk-4.0",
-        "Gdk-4.0",
-        "JavaScriptCore-6.0",
-        "GdkWayland-4.0",
-        "WebKit-6.0",
+        "WPEJavaScriptCore-2.0",
+        "WPEPlatform-2.0",
+        "WPEPlatformDRM-2.0",
+        "WPEPlatformHeadless-2.0",
+        "WPEPlatformWayland-2.0",
+        "WPEWebKit-2.0",
+        "WPEWebProcessExtension-2.0",
     };
     for (gir_files_path) |dir| {
         codegen_exe_run.addPrefixedDirectoryArg("--gir-dir=", .{ .cwd_relative = dir });

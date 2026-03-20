@@ -2,27 +2,17 @@
   lib,
   pkgs,
   mkShell,
-  gtk4,
-  webkitgtk_6_0,
   glib,
   gobject-introspection,
-  gdk-pixbuf,
-  graphene,
-  pango,
-  harfbuzz,
   libsoup_3,
   libxslt,
+  wpewebkit,
   ...
 }: let
   gir_dir = lib.makeSearchPathOutput "share/gir-1.0" "share/gir-1.0" [
-    gtk4.dev
+    wpewebkit.dev
     glib.dev
-    webkitgtk_6_0.dev
-    gdk-pixbuf.dev
-    graphene.dev
-    pango.dev
     gobject-introspection.dev
-    harfbuzz.dev
     libsoup_3.dev
   ];
   zig = pkgs.zig_0_15;
