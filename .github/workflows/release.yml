@@ -14,7 +14,7 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
-        run: nix develop -c zig build codegen
+        run: nix develop --accept-flake-config -c zig build codegen
 
       - name: Package bindings
         run: tar -czf bindings.tar.gz -C zig-out bindings

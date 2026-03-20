@@ -21,4 +21,15 @@
       }
     );
   };
+  nixConfig = {
+    # substituers will be appended to the default substituters when fetching packages
+    extra-substituters = [
+      "https://cache.garnix.io"
+      "https://nix-wpe-webkit.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      "nix-wpe-webkit.cachix.org-1:ItCjHkz1Y5QcwqI9cTGNWHzcox4EqcXqKvOygxpwYHE="
+    ];
+  };
 }
