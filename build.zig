@@ -20,7 +20,6 @@ pub fn build(b: *std.Build) void {
         "Gio-2.0",
         "GObject-2.0",
         "GLib-2.0",
-        "WPEJavaScriptCore-2.0",
         "WPEPlatform-2.0",
         "WPEPlatformDRM-2.0",
         "WPEPlatformHeadless-2.0",
