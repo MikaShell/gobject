@@ -3,9 +3,9 @@ pub fn build(b: *std.Build) void {
     const zig_gobject = b.dependency("gobject-codegen", .{});
     const codegen_exe = zig_gobject.artifact("translate-gir");
     const codegen_exe_run = b.addRunArtifact(codegen_exe);
-    const gir_dir = std.process.getEnvVarOwned(b.allocator, "GIR_DIR") catch @panic("OOM");
+    const gir_dir = b.graph.environ_map.get("GIR_DIR") orelse @panic("GIR_DIR not set");
     const gir_files_path = blk: {
-        var result = std.ArrayList([]const u8){};
+        var result = std.ArrayList([]const u8).empty;
         if (gir_dir.len > 0) {
             var it = std.mem.splitAny(u8, gir_dir, ":");
 

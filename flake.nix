@@ -1,10 +1,12 @@
 {
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   inputs.nix-wpe-webkit.url = "github:eval-exec/nix-wpe-webkit";
-
+  inputs.zig-overlay.url = "github:mitchellh/zig-overlay";
+  inputs.zig-overlay.inputs.nixpkgs.follows = "nixpkgs";
   outputs = {
     nixpkgs,
     nix-wpe-webkit,
+    zig-overlay,
     ...
   }: let
     forAllSystems = nixpkgs.lib.genAttrs [
@@ -16,8 +18,9 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         wpewebkit = nix-wpe-webkit.packages.${system}.wpewebkit;
+        zig = zig-overlay.packages.${system}.master;
       in {
-        default = pkgs.callPackage ./devshell.nix {inherit wpewebkit;};
+        default = pkgs.callPackage ./devshell.nix {inherit wpewebkit zig;};
       }
     );
   };
